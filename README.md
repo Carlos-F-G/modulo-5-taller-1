@@ -1,43 +1,62 @@
-# Hospital Nueva Vida - Proyecto ReactJS
+# Proyecto: Hospital Nueva Vida - Consumo de API
 
-Para esta evaluación modeulo 4 taller 3, seguimos trabajando en el proyecto Hospital Nueva Vida, desarrollado con ReactJS. Este simula el funcionamiento básico de un sistema de gestión hospitalaria. Incluye un listado dinámico de doctores con filtro por especialidad, una lista de servicios destacados, y un formulario interactivo para agendar citas con validaciones. Además, se implementaron componentes reutilizables, una interfaz profesional y responsiva, y una gestión de estado eficiente con Context API.
+## Consumo de API con Axios
 
-## Funcionalidades Implementadas
+### ¿Por qué se usó Axios en lugar de Fetch API?
+En este proyecto se eligió Axios en lugar de `fetch` para consumir la API debido a las siguientes ventajas:
 
-1. **Ruteo y Vistas Principales**
+1. Manejo Automático de JSON: Axios convierte automáticamente las respuestas en JSON, mientras que con Fetch es necesario llamar `response.json()`.
+2. Manejo Simplificado de Errores: Con Fetch, hay que verificar manualmente si la respuesta fue exitosa (`response.ok`), mientras que Axios lanza un error automáticamente si hay fallos.
+3. Soporte para Cancelación de Peticiones: Axios permite cancelar peticiones fácilmente usando `CancelToken`.
+4. Mayor Compatibilidad con Antiguos Navegadores: Fetch no es compatible con todos los navegadores sin polyfills.
 
-   - Home: Muestra servicios destacados.
-   - Equipo Médico: Lista de doctores con filtro por especialidad.
-   - Citas: Formulario para agendar citas y lista de citas agendadas.
+En este proyecto, Axios se utilizó en `DoctorList.jsx` para obtener la lista de doctores desde la API y manejar correctamente los errores en caso de fallos en la conexión.
 
-2. **Gestión de Estado Global**
+---
 
-   - Uso de Context API para manejar:
-     - Lista de servicios.
-     - Lista de doctores.
-     - Citas agendadas.
+## Requisitos de la Evaluación
+Este proyecto cumple con todos los requisitos de la evaluación:
 
-3. **Componentes Dinámicos**
+### Implementación de Peticiones con useEffect y useState
+- Se utilizó `useEffect` y `useState` para manejar el estado y la carga de datos en `DoctorList.jsx`.
+- Los datos se muestran correctamente en la interfaz.
 
-   - ServiceList: Renderiza servicios desde el contexto.
-   - DoctorList: Filtra y muestra la lista de doctores.
-   - AppointmentForm: Formulario para agendar citas con validaciones.
-   - AppointmentList: Muestra las citas agendadas.
+### Uso de Fetch API o Axios para el Consumo de la API
+- Se implementó `Axios` para el consumo de la API.
+- Se documentó la elección de `Axios` en este `README.md`.
+- Se manejaron los errores de manera adecuada en la interfaz.
 
-4. **Validaciones y Optimización**
+### Peticiones Basadas en Eventos del Usuario
+- Se implementó un botón `Recargar Datos` para permitir al usuario actualizar la información manualmente.
 
-   - Validación de props con PropTypes.
-   - Manejo de fechas válidas en el formulario de citas.
-   - Optimización del DOM Virtual con React.Fragment.
-   - Uso de React Profiler para análisis de rendimiento.
+### Manejo de Errores en Peticiones Asíncronas
+- Se muestra un mensaje de error cuando la API falla.
+- Se agregó un botón `Reintentar` para intentar nuevamente la petición.
 
-5. \*\* Tecnologías Utilizadas
+### Optimización del Rendimiento al Omitir Efectos en useEffect
+- Se optimizó `useEffect` en `DoctorList.jsx` para evitar peticiones innecesarias.
+- Se utilizó `useCallback` para mejorar el rendimiento.
 
-- React
-- React Router DOM
-- Context API
-- Material-UI
-- PropTypes
-- Vite
 
-\*\*Carlos Farias Galdames
+
+## Estructura del Proyecto
+
+src/
+ ├── components/
+ │   ├── DoctorList.jsx
+ │   ├── DoctorCard.jsx
+ │   ├── AppointmentForm.jsx
+ │   ├── AppointmentList.jsx
+ │   ├── Header.jsx
+ │   ├── Footer.jsx
+ │   ├── ServiceList.jsx
+ ├── views/
+ │   ├── Home.jsx
+ │   ├── Appointments.jsx
+ ├── context/
+ ├── data/
+ ├── App.jsx
+ ├── main.jsx
+
+
+### Carlos Farias Galdames
