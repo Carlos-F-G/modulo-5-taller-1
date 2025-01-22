@@ -41,6 +41,7 @@ Este proyecto cumple con todos los requisitos de la evaluación:
 
 ## Estructura del Proyecto
 
+```
 src/
  ├── components/
  │   ├── DoctorList.jsx
@@ -57,6 +58,7 @@ src/
  ├── data/
  ├── App.jsx
  ├── main.jsx
+```
 
 
 ### Carlos Farias Galdames
